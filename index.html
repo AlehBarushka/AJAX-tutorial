@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>AJAX</title>
+	</head>
+	<body>
+		<button id="get-images">Get images</button>
+		<span>Номер страницы:</span>
+		<input type="number" value="" id="page-number" />
+		<button id="get-tasks">Get tasks</button>
+		<button id="create-tasks">Add tasks</button>
+		<input type="text" value="" id="add-task" />
+		<div id="images-result"></div>
+		<ul id="tasks-result"></ul>
+		<!-- <script
+			src="https://code.jquery.com/jquery-2.2.4.js"
+			integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+			crossorigin="anonymous"
+		></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="./service.js"></script>
+		<script src="./index.js"></script>
+	</body>
+</html>
