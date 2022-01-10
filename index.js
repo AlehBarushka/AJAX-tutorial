@@ -19,32 +19,21 @@ const onTasksReceived = (tasksData) => {
 	resultTasksBlock.innerHTML = '';
 	tasksData.forEach((task) => {
 		const li = document.createElement('li');
-		const btn = document.createElement('input');
-		li.innerHTML = task.title;
-		btn.type = 'button';
-		btn.value = 'delete';
-		btn.id = task.id;
+		const btn = document.createElement('button');
+		const span = document.createElement('span');
+		btn.innerHTML = '✖';
+		span.innerText = task.title;
+		li.dataset.id = task.id;
+		li.appendChild(btn);
+		li.appendChild(span);
 		resultTasksBlock.appendChild(li);
-		resultTasksBlock.appendChild(btn);
-		btn.addEventListener('click', () => {
-			deleteTask(task.id);
-		});
 	});
 };
 
-const onTaskCreated = (taskText) => {
+const onTaskCreated = () => {
 	inputAdd.value = '';
-	const li = document.createElement('li');
-	const btn = document.createElement('input');
-	li.innerHTML = taskText;
-	btn.type = 'button';
-	btn.value = 'delete';
-	btn.id = task.id;
-	resultTasksBlock.appendChild(li);
-	resultTasksBlock.appendChild(btn);
-	btn.addEventListener('click', () => {
-		deleteTask(task.id);
-	});
+	const promise = getTasks();
+	promise.then(onTasksReceived);
 };
 
 getImagesButton.addEventListener('click', () => {
@@ -58,7 +47,7 @@ getTasksButton.addEventListener('click', () => {
 });
 
 createTaskButton.addEventListener('click', () => {
-	const taskText = inputAdd.value;
-	const prpmise = createTask(taskText);
-	prpmise.then(onTaskCreated(taskText));
+	const text = inputAdd.value;
+	const promise = createTask(text);
+	promise.then(onTaskCreated);
 });
